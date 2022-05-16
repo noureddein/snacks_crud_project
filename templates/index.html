@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% block title %}Snack List{% endblock %}
+
+{% block content %}
+
+    <div class=" m-4">
+        <table  class="table table-striped">
+            <tbody>
+                <thead>
+                    <th>Name</th>	
+                    <th>Description</th>
+                    <th>Purchaser</th>
+                    <th>Action</th>
+                </thead>			
+                {% for snack in snacks_list %}
+                    <tr>
+                        <th>{{ snack.title }}</th>	
+                        <th>{{ snack.description }}</th>
+                        <th>{{ snack.purchaser }}</th>
+                        <th>
+                            <a href="{% url 'update-snack' pk=snack.pk %}" class="btn btn-primary m-1">Update</a>
+                            <form action="{% url 'delete-snack' pk=snack.pk  %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" value="Delete!" class="btn btn-danger m-1">
+                            </form>
+                        </th>
+                    </tr> 
+                {% endfor %} 
+            </tbody>   
+        </table>
+    </div>
+
+{% endblock %}
