@@ -1,0 +1,10 @@
+{% extends '_base.html' %}
+{% block title %}Snack Details{% endblock %}
+
+{% block content %}
+    <div>
+        <p>Title: {{snack.title}}</p>
+        <p>Description: {{snack.description}}</p>
+        <p>Purchaser: {{snack.purchaser}}</p>
+    </div>
+{% endblock content %}
